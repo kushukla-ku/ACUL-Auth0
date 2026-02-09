@@ -46,17 +46,17 @@ const LoginIdScreen: React.FC = () => {
         <StaticImgTemplate />
         <HeadTemplate />
         <div className="loginFormDiv">
-            <h2 className="signinHeading">{trans.header.title}</h2>
+            <h2 className="signinHeading">{trans.header.description}</h2>
             <form onSubmit={handleSubmit}>
                 <div className="formDiv">
-                    <label className="identifierLabel" htmlFor="identifier">Email/Username</label>
+                    <label className="identifierLabel" htmlFor="identifier">{trans.form.fields.identifier.label}</label>
                     <input 
                         className="identifierInput"
                         id="identifier" 
                         type="text" 
                         value={identifier} 
                         onChange={(e) => setIdentifier(e.target.value)} 
-                        placeholder="Enter your username" 
+                        placeholder={trans.form.fields.identifier.placeholder} 
                         required 
                     />
                 </div>

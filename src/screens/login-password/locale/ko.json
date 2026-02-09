@@ -1,35 +1,34 @@
 {
   "page": {
-    "title": "Login",
-    "separator": "OR"
+    "title": "로그인 비밀번호"
   },
   "header": {
     "logoAlt": "Application Logo",
-    "title": "로그인",
-    "description": "Log in to dev-tenant to continue to my acul react."
+    "title": "Welcome",
+    "description": "계속하려면 비밀번호를 입력하세요"
   },
   "form": {
     "fields": {
-      "identifier": {
-        "required": "This field is required"
+      "username": {
+        "label": "Username or Email Address",
+        "edit": "Edit"
+      },
+      "password": {
+        "label": "비밀번호",
+        "required": "Password is required",
+        "minLength": "Password must be at least {minLength} characters",
+        "placeholder": "비밀번호를 입력하세요"
       },
       "captcha": {
         "label": "CAPTCHA",
         "required": "Please complete the CAPTCHA"
       }
     },
-    "button": "Continue",
-    "forgotPassword": "Forgot Password?",
-    "passkeyButton": "Continue with a passkey",
-    "countryPicker": {
-      "placeholder": "Select Country"
-    }
+    "button": "로그인",
+    "forgotPassword": "Forgot Password?"
   },
   "footer": {
     "text": "Don't have an account?",
     "linkText": "Sign up"
-  },
-  "social": {
-    "continueWith": "계속"
   }
 }

@@ -6,12 +6,14 @@
   "header": {
     "logoAlt": "Application Logo",
     "title": "Sign In",
-    "description": "Log in to dev-tenant to continue to my acul react."
+    "description": "Log in to dev-tenant"
   },
   "form": {
     "fields": {
       "identifier": {
-        "required": "This field is required"
+        "label": "Username/Email",
+        "required": "This field is required",
+        "placeholder": "Enter your username or email"
       },
       "captcha": {
         "label": "CAPTCHA",

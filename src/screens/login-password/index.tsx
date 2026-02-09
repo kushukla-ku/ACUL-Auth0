@@ -47,17 +47,17 @@ const LoginPasswordScreen: React.FC = () => {
         <StaticImgTemplate />
         <HeadTemplate />
         <div className="loginFormDiv">
-             <h2 className="signinHeading">{trans.header.title}</h2>
+             <h2 className="signinHeading">{trans.header.description}</h2>
              <form onSubmit={handleSubmit}>
                 <div className="formDiv">
-                    <label className="identifierLabel" htmlFor="identifier">Email/Username</label>
+                    <label className="identifierLabel" htmlFor="identifier">{trans.form.fields.password.label}</label>
                     <input 
                         className="identifierInput"
                         id="identifier" 
                         type="password" 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
-                        placeholder="Enter your password" 
+                        placeholder={trans.form.fields.password.placeholder} 
                         required 
                     />
                 </div>
