@@ -5,21 +5,22 @@ import FootTemplate from "@/shared/FootTemplate";
 import StaticImgTemplate from "@/shared/StaticImgTemplate";
 
 const LoginIdScreen: React.FC = () => {
-    const loginIdManager = new LoginId();
-    const [identifier, setIdentifier] = useState('');
-    const [error] = useState<String | null>(null);
 
+    const [loginIdManager] = useState(() => new LoginId());
+    const [identifier, setIdentifier] = useState('');
+    const [error, setError ] = useState<string | null>(null);
     const [trans, setTrans] = useState<any>(null);
+
     useEffect(() => {
         const curLocale = loginIdManager.transaction?.locale || 'en';
         const loadLocale = async () => {
-            try{
+            try {
                 const data = await import(`./locale/${curLocale}.json`);
                 setTrans(data.default);
             }
             catch (err)
             {
-                console.error("Could not load locale! falling back to english");
+                console.error("Could not load locale! Falling back to English");
                 const fallback = await import('./locale/en.json');
                 setTrans(fallback.default);
             }
@@ -29,12 +30,14 @@ const LoginIdScreen: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError(null);
 
         try {
             await loginIdManager.login({ username: identifier });
         }
         catch (err) {
-            console.error("Login failed", err);
+            const errors = loginIdManager.getErrors();
+            setError(errors?.[0]?.message || "An unexpected error occured! Please refer logs for more details");
         }
     };
 
@@ -60,11 +63,14 @@ const LoginIdScreen: React.FC = () => {
                         required 
                     />
                 </div>
+
                 {error && <p style={{color:'red'}}>{error}</p>}
+
                 <button className="btnSubmit" type="submit">
                     {trans.form.button}
                 </button>
             </form>
+            
             {loginIdManager.transaction?.alternateConnections?.map((conn) =>
             (
                 <button key={conn.name} onClick={() => loginIdManager.federatedLogin({ connection: conn.name})}

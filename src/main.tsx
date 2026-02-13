@@ -15,6 +15,7 @@ async function initializeApp() {
    * appends it to Auth0's document.body, and then mounts the React application onto this div.
    * This differs from typical setups where an index.html is bundled directly with the app.
    */
+  
   const rootElement = document.createElement("div");
   rootElement.id = "root";
 
